@@ -1,21 +1,38 @@
+import { useState } from "react";
 const title = (
-    <a href="/">
-        <img className="logo" src="https://lh5.googleusercontent.com/p/AF1QipOhHeCaQ6Xb6RVf3R_ZBTbDK4FIug_203rKsHLT" alt="logo"/>
-    </a>
+  <a href="/">
+    <img
+      className="logo"
+      src="https://lh5.googleusercontent.com/p/AF1QipOhHeCaQ6Xb6RVf3R_ZBTbDK4FIug_203rKsHLT"
+      alt="logo"
+    />
+  </a>
 );
 
-const Header = () => (
+const loggedInUser = () => {
+  return true;
+};
+
+const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  return (
     <div className="header" id="header">
-        {title}
-        <div className="nav-items">
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact Us</li>
-                <li>Cart</li>
-            </ul>
-        </div>
+      {title}
+      {console.log("hello world!")}
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+          {isLoggedIn ? (
+            <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+          ) : (
+            <button onClick={() => setIsLoggedIn(true)}>Login</button>
+          )}
+        </ul>
+      </div>
     </div>
-
-);
+  );
+};
 export default Header;

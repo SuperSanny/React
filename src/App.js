@@ -5,12 +5,12 @@ import Body from "./components/Body";
 import Footer from "./components/Footer";
 
 const Applayout = () => (
-    <>
-        <Header />
-        <Body />
-        <Footer />
-    </>
+  <>
+    <Header />
+    <Body />
+    <Footer />
+  </>
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Applayout/>);
+root.render(<Applayout />);
