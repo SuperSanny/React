@@ -20,6 +20,7 @@
 }
 .card {
   width: 170px;
+  height: 340px;
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
@@ -63,7 +64,30 @@
   flex-wrap: wrap;
   border-radius: 3px;
 }
+.body-container {
+  border: 1px solid #f63b00;
+  margin: 10px;
+  border-radius: 3px;
+}
+.footer-container {
+  border: 1px solid #f63b00;
+  margin: 10px;
+  border-radius: 3px;
+}
 .card-image {
   border-radius: 3px;
   border: 1px dotted #f63b00;
+}
+
+.shimmer-restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.shimmer-card {
+  width: 171.5px;
+  height: 340px;
+  background-color: lightgray;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3px;
 }

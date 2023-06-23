@@ -1,11 +1,11 @@
 {
   "name": "react",
   "version": "1.0.0",
-  "description": "This is my first app.",
+  "description": "This is food villa application.",
   "scripts": {
+    "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "test": "jest"
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -18,14 +18,13 @@
   },
   "homepage": "https://github.com/SuperSanny/React#readme",
   "devDependencies": {
-    "@babel/core": "^7.22.1",
-    "babel-plugin-transform-remove-console": "^6.9.4",
-    "parcel": "^2.9.1",
+    "parcel": "^2.9.2",
     "process": "^0.11.10"
   },
   "dependencies": {
-    "minimatch": "^9.0.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.13.0"
   }
 }

@@ -4,6 +4,7 @@ import { restaurantList } from "../contains";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [filteredrestaurants, setFilteredRestaurants] = useState([]);
@@ -35,9 +36,13 @@ const Body = () => {
   // if (filteredrestaurants?.length === 0)
   //   return <h1>There is no any restaurants.</h1>;
 
-  return allrestaurants?.length === 0 ? (
-    <Shimmer />
-  ) : (
+  function enterPressed(event) {
+    if (event.key === "enter") {
+      filterData();
+    }
+  }
+
+  return (
     <>
       <div className="search-container">
         {console.log("hello")}
@@ -46,6 +51,7 @@ const Body = () => {
           className="search-input"
           placeholder="Search"
           value={searchText}
+          onKeyDown={enterPressed}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
@@ -61,11 +67,23 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant-list">
-        {filteredrestaurants.map((restaurant) => {
-          return (
-            <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
-          );
-        })}
+        {allrestaurants?.length === 0 ? (
+          <Shimmer />
+        ) : (
+          filteredrestaurants.map((restaurant) => {
+            return (
+              <Link
+                to={"/restaurants/" + restaurant?.data?.id}
+                key={restaurant?.data?.id}
+              >
+                <RestaurantCard
+                  {...restaurant?.data}
+                  key={restaurant?.data?.id}
+                />
+              </Link>
+            );
+          })
+        )}
       </div>
     </>
   );
