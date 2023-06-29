@@ -1,27 +1,33 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { IMG_CDN_URL } from "../contains";
+import useRestaurant from "../Utils/useRestaurant";
 
 const RestaurantsMenu = () => {
   const { resId } = useParams();
-  const [restaurant, setRestaurant] = useState({});
-  useEffect(() => {
-    getRestorantInfo();
-  }, []);
-  async function getRestorantInfo() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9261382&lng=77.62210910000002&restaurantId=" +
-        resId +
-        "&submitAction=ENTER"
-    );
-    const json = await data.json();
-    console.log(json?.data?.cards[0]?.card?.card?.info);
-    setRestaurant(json?.data?.cards[0]?.card?.card?.info);
-  }
+  const restaurant = useRestaurant(resId);
   return (
     <>
       <div className="body-container">
-        <h1>Restaurant Id : {restaurant.id}</h1>
-        <h2>Name : {restaurant.name}</h2>
+        <div>
+          <h2>{restaurant?.name}</h2>
+          <p>{restaurant?.cuisines}</p>
+          <p>
+            {restaurant?.areaName +
+              ", " +
+              restaurant?.sla?.lastMileTravelString}
+          </p>
+          <p>{restaurant?.avgRating}</p>
+          <p>{restaurant?.totalRatingsString}</p>
+          <p>{restaurant?.sla?.maxDeliveryTime + " MINS"}</p>
+          <p>{restaurant?.costForTwoMessage}</p>
+        </div>
+        <div>
+          <img
+            className="card-image"
+            src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
+          />
+        </div>
       </div>
     </>
   );
